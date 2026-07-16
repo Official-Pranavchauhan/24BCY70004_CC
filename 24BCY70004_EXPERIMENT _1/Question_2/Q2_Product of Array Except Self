@@ -1,1 +1,17 @@
+from functools import reduce
+class Solution:
+    def productExceptSelf(self, nums: List[int]) -> List[int]:
+        n=len(nums)
+        px=[1]*n
+        sx=[1]*n
+        a=[1]*n
+        for i in range(1,n):
+            px[i]=px[i-1]*nums[i-1]
 
+        for i in range(n-2,-1,-1):
+            sx[i]=sx[i+1]*nums[i+1]
+
+        for i in range(n):
+            a[i]=px[i]*sx[i]
+
+        return a
